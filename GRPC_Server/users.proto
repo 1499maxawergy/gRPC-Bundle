@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+message UserData{
+    string username = 1;
+    string password = 2;
+}
+
+message UserDataUpdate{
+    string old_username = 1;
+    string old_password = 2;
+    string new_username = 3;
+    string new_password = 4;
+}
+
+message UserResponse{
+    string message = 1;
+    bool success = 2; 
+}
+
+service UserService{
+    rpc login(UserData) returns (UserResponse) {} 
+    rpc register(UserData) returns (UserResponse) {}
+    rpc delete(UserData) returns (UserResponse) {}
+    rpc update(UserDataUpdate) returns (UserResponse) {}
+}
